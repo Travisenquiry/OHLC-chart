@@ -8,10 +8,10 @@ const ChartComponent = () => {
         let ctx = chart.getContext("2d");
         let chartDiv = document.getElementById("chart-div");
 
-        //Set canvas size to be chart-div size
+        //Set fixed canvas size
         //Attempted to use lifecycle to set size dynamically but met with a bug of maximum update depth
-        chart.width = chartDiv.clientWidth;
-        chart.height = chartDiv.clientHeight;
+        chart.width = 900;
+        chart.height = 400;
 
         ctx.moveTo(0, 0);
         ctx.lineTo(50, 500);
