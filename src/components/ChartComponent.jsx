@@ -13,8 +13,8 @@ const ChartComponent = () => {
         chart.width = 900;
         chart.height = 400;
 
-        ctx.moveTo(0, 0);
-        ctx.lineTo(50, 500);
+        ctx.moveTo(50, 0);
+        ctx.lineTo(50, 400);
         ctx.stroke();
     });
 
