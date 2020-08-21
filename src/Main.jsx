@@ -1,8 +1,11 @@
 import React from 'react';
+import ChartComponent from './components/ChartComponent.jsx';
 
 const Main = () => {
     return (
-        <div>test</div>
+        <div className="Main">
+            <ChartComponent />
+        </div>
     );
 };
 
