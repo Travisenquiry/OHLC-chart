@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 //Get stock list function
-const getStock = (props) => {
+const getStock = (props, setStockChartData) => {
+    //Variables
+    let stockChartArray = [];
     let stockSymbol = props.symbol;
     const apiLink = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockSymbol}&apikey=GRWNDOCNLWTTES40`;
 
@@ -13,22 +15,29 @@ const getStock = (props) => {
         )
         .then(
             function(data){
-                console.log(data);
+                //Set array to consist of 50 data by latest date sorted from earliest to latest
+                stockChartArray = Object.values(data["Time Series (Daily)"]).slice(0, 50).reverse();
+                console.log(stockChartArray);
             }
         )
 }
 
 const ChartComponent = (props) => {
+    //States
+    const [stockChartData, setStockChartData] = useState([]);
+
+
 
     //Lifecycle Method
     useEffect(() => {
-        //Get Stock listing
-        getStock(props);
 
+
+    //Get Stock listing and push into states
+    getStock(props, setStockChartData);
         //Implemented chart canvas
         let chart = document.getElementById("chart");
         let ctx = chart.getContext("2d");
-        let chartDiv = document.getElementById("chart-div");
+        //let chartDiv = document.getElementById("chart-div");
 
         //Set fixed canvas size
         //Attempted to use lifecycle to set size dynamically but met with a bug of maximum update depth
