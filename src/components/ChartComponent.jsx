@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 const ChartComponent = (props) => {
-    //States
-    const [stockChartData, setStockChartData] = useState();
-    let stockChartArray = [];
 
     //Get stock list function
     const getStock = (props) => {
@@ -12,10 +9,11 @@ const ChartComponent = (props) => {
         const apiLink = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockSymbol}&apikey=GRWNDOCNLWTTES40`;
         
         //Reinitialized for bearish and bullish symbols
-        //Unable to figure out a way to let it be accessable from useEffect's initialization
+        //Unable to figure out a way to access from useEffect's initialization
         let chart = document.getElementById("chart");
         let ctx = chart.getContext("2d");
 
+        //Fetch JSON from Alphavantage
         fetch(apiLink)
             .then(
                 function(response) {
@@ -24,8 +22,8 @@ const ChartComponent = (props) => {
             )
             .then(
                 function(data){
-                    //Set array to consist of 50 data by latest date sorted from earliest to latest
-                    stockChartArray = Object.values(data["Time Series (Daily)"]).slice(0, 50).reverse();
+                    //Initialize array to consist of 50 data by latest date sorted from earliest to latest
+                    let stockChartArray = Object.values(data["Time Series (Daily)"]).slice(0, 50).reverse();
                     console.log(stockChartArray[0]["1. open"]);
 
                     //Testing of symbols (bullish)
