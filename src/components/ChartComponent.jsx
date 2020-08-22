@@ -1,44 +1,80 @@
 import React, { useState, useEffect } from 'react';
 
-//Get stock list function
-const getStock = (props, setStockChartData) => {
-    //Variables
-    let stockChartArray = [];
-    let stockSymbol = props.symbol;
-    const apiLink = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockSymbol}&apikey=GRWNDOCNLWTTES40`;
-
-    fetch(apiLink)
-        .then(
-            function(response) {
-                return response.json();
-            }
-        )
-        .then(
-            function(data){
-                //Set array to consist of 50 data by latest date sorted from earliest to latest
-                stockChartArray = Object.values(data["Time Series (Daily)"]).slice(0, 50).reverse();
-                console.log(stockChartArray);
-            }
-        )
-}
-
 const ChartComponent = (props) => {
     //States
-    const [stockChartData, setStockChartData] = useState([]);
+    const [stockChartData, setStockChartData] = useState();
+    let stockChartArray = [];
+
+    //Get stock list function
+    const getStock = (props) => {
+        //Variables
+        let stockSymbol = props.symbol;
+        const apiLink = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockSymbol}&apikey=GRWNDOCNLWTTES40`;
+        
+        //Reinitialized for bearish and bullish symbols
+        //Unable to figure out a way to let it be accessable from useEffect's initialization
+        let chart = document.getElementById("chart");
+        let ctx = chart.getContext("2d");
+
+        fetch(apiLink)
+            .then(
+                function(response) {
+                    return response.json();
+                }
+            )
+            .then(
+                function(data){
+                    //Set array to consist of 50 data by latest date sorted from earliest to latest
+                    stockChartArray = Object.values(data["Time Series (Daily)"]).slice(0, 50).reverse();
+                    console.log(stockChartArray[0]["1. open"]);
+
+                    //Testing of symbols (bullish)
+                    ctx.beginPath();
+                    ctx.strokeStyle = "#58bf66";
+                    ctx.lineWidth = 3;
+                    //High-to-low
+                    ctx.moveTo(66, 100);
+                    ctx.lineTo(66, 140);
+                    ctx.stroke();
+                    //Open
+                    ctx.moveTo(66, 130);
+                    ctx.lineTo(59, 130);
+                    ctx.stroke();
+                    //Close
+                    ctx.moveTo(66, 107);
+                    ctx.lineTo(73, 107);
+                    ctx.stroke();
 
 
+                    //Testing of symbols (bearish)
+                    ctx.beginPath();
+                    ctx.strokeStyle = "#ee6f72";
+                    ctx.lineWidth = 3;
+                    //High-to-low
+                    ctx.moveTo(82, 100);
+                    ctx.lineTo(82, 130);
+                    ctx.stroke();
+                    //Open
+                    ctx.moveTo(82, 106);
+                    ctx.lineTo(75, 106);
+                    ctx.stroke();
+                    //Close
+                    ctx.moveTo(82, 109);
+                    ctx.lineTo(89, 109);
+                    ctx.stroke();
+                }
+            )
+    }
 
     //Lifecycle Method
     useEffect(() => {
+        //Get Stock listing and push into states
+        getStock(props);
 
-
-    //Get Stock listing and push into states
-    getStock(props, setStockChartData);
         //Implemented chart canvas
         let chart = document.getElementById("chart");
         let ctx = chart.getContext("2d");
-        //let chartDiv = document.getElementById("chart-div");
-
+        
         //Set fixed canvas size
         //Attempted to use lifecycle to set size dynamically but met with a bug of maximum update depth
         chart.width = 900;
@@ -77,40 +113,6 @@ const ChartComponent = (props) => {
             ctx.textAlign = "right";
             ctx.fillText(yAxisPrice, 40, priceScaleDistance+4);      
         }
-
-        //Testing of symbols (bullish)
-        ctx.beginPath();
-        ctx.strokeStyle = "#58bf66";
-        ctx.lineWidth = 3;
-        //High-to-low
-        ctx.moveTo(66, 100);
-        ctx.lineTo(66, 140);
-        ctx.stroke();
-        //Open
-        ctx.moveTo(66, 130);
-        ctx.lineTo(59, 130);
-        ctx.stroke();
-        //Close
-        ctx.moveTo(66, 107);
-        ctx.lineTo(73, 107);
-        ctx.stroke();
-
-        //Testing of symbols (bearish)
-        ctx.beginPath();
-        ctx.strokeStyle = "#ee6f72";
-        ctx.lineWidth = 3;
-        //High-to-low
-        ctx.moveTo(82, 100);
-        ctx.lineTo(82, 130);
-        ctx.stroke();
-        //Open
-        ctx.moveTo(82, 106);
-        ctx.lineTo(75, 106);
-        ctx.stroke();
-        //Close
-        ctx.moveTo(82, 109);
-        ctx.lineTo(89, 109);
-        ctx.stroke();
 
     });
 
