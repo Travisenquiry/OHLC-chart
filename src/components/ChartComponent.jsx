@@ -24,7 +24,33 @@ const ChartComponent = (props) => {
                 function(data){
                     //Initialize array to consist of 50 data by latest date sorted from earliest to latest
                     let stockChartArray = Object.values(data["Time Series (Daily)"]).slice(0, 50).reverse();
-                    console.log(stockChartArray[0]["1. open"]);
+                    console.log(stockChartArray);
+                    //Creation of symbols
+                    for (let i=0; i<stockChartArray.length; i++){
+                        //Variables for readability
+                        let open = parseInt(stockChartArray[i]["1. open"]);
+                        let close = parseInt(stockChartArray[i]["4. close"]);
+                        let high = parseInt(stockChartArray[i]["2. high"]);
+                        let low = parseInt(stockChartArray[i]["3. low"]);
+
+                        //Setup of symbols
+                        ctx.beginPath();
+                        ctx.lineWidth = 3;
+                        //Check for bearish or bullish
+                        if(open > close){
+                            //Bearish Symbol
+                            console.log("hello");
+                            ctx.strokeStyle = "#ee6f72";
+                        } else {
+                            //Bullish Symbol
+                            console.log("bye");
+                            ctx.strokeStyle = "#58bf66";
+                        }
+                        //Set to 16px per stock change gap, +1 due to index being 0
+                        ctx.moveTo(50 + (16 * (i + 1)), high + 50);
+                        ctx.lineTo(50 + (16 * (i + 1)), low + 50);
+                        ctx.stroke();
+                    }
 
                     //Testing of symbols (bullish)
                     ctx.beginPath();
