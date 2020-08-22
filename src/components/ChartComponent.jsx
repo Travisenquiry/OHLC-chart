@@ -1,8 +1,30 @@
 import React, { useState, useEffect } from 'react';
 
-const ChartComponent = () => {
+//Get stock list function
+const getStock = (props) => {
+    let stockSymbol = props.symbol;
+    const apiLink = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockSymbol}&apikey=GRWNDOCNLWTTES40`;
 
+    fetch(apiLink)
+        .then(
+            function(response) {
+                return response.json();
+            }
+        )
+        .then(
+            function(data){
+                console.log(data);
+            }
+        )
+}
+
+const ChartComponent = (props) => {
+
+    //Lifecycle Method
     useEffect(() => {
+        //Get Stock listing
+        getStock(props);
+
         //Implemented chart canvas
         let chart = document.getElementById("chart");
         let ctx = chart.getContext("2d");
@@ -49,7 +71,7 @@ const ChartComponent = () => {
 
         //Testing of symbols (bullish)
         ctx.beginPath();
-        ctx.strokeStyle = '#58bf66';
+        ctx.strokeStyle = "#58bf66";
         ctx.lineWidth = 3;
         //High-to-low
         ctx.moveTo(66, 100);
@@ -66,7 +88,7 @@ const ChartComponent = () => {
 
         //Testing of symbols (bearish)
         ctx.beginPath();
-        ctx.strokeStyle = '#ee6f72';
+        ctx.strokeStyle = "#ee6f72";
         ctx.lineWidth = 3;
         //High-to-low
         ctx.moveTo(82, 100);
