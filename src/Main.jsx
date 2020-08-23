@@ -4,7 +4,7 @@ import ChartComponent from './components/ChartComponent.jsx';
 const Main = () => {
     return (
         <div className="Main">
-            <ChartComponent symbol="AVHOQ"/>
+            <ChartComponent symbol="CNTTQ"/>
         </div>
     );
 };

@@ -36,7 +36,6 @@ const ChartComponent = (props) => {
                         let low = parseFloat(stockChartArray[i]["3. low"]);
 
                         //Setup of symbols
-                        ctx.beginPath();
                         ctx.lineWidth = 3;
                         //Check for bearish or bullish
                         if(open > close){
@@ -54,11 +53,24 @@ const ChartComponent = (props) => {
                         } else {
                             console.log("error");
                         }
+
                         //Drawing of symbols
+                        //High-low
                         //Set to 16px per stock change gap, +1 due to index being 0
-                        //Y-axis is done by purely trial and error, I do not know how the formula works
-                        ctx.moveTo(50 + (16 * (i + 1)), (high * 800) - 110);
-                        ctx.lineTo(50 + (16 * (i + 1)), (low * 800) - 110);
+                        //Y-axis formula is done by purely trial and error
+                        ctx.beginPath();
+                        ctx.moveTo(50 + (16 * (i + 1)), ((high * 800) - 110));
+                        ctx.lineTo(50 + (16 * (i + 1)), ((low * 800) - 110));
+                        ctx.stroke();
+                        //Open
+                        ctx.beginPath();
+                        ctx.moveTo(50 + (16 * (i + 1)), (open * 800) - 110);
+                        ctx.lineTo((50 + (16 * (i + 1)) - 7), (open * 800) - 110);
+                        ctx.stroke();
+                        //Open
+                        ctx.beginPath();
+                        ctx.moveTo(50 + (16 * (i + 1)), (close * 800) - 110);
+                        ctx.lineTo((50 + (16 * (i + 1)) + 7), (close * 800) - 110);
                         ctx.stroke();
                     }
 
