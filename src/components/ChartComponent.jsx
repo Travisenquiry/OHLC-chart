@@ -25,7 +25,8 @@ const ChartComponent = (props) => {
                     //Initialize array to consist of 50 data by latest date sorted from earliest to latest
                     let stockChartArray = Object.values(data["Time Series (Daily)"]).slice(0, 50).reverse();
                     console.log(stockChartArray);
-                    
+                    //Flips the canvas on the Y axis for easier symbols stroke
+                    ctx.transform(1, 0, 0, -1, 0, chart.height);
                     //Creation of symbols
                     for (let i=0; i<stockChartArray.length; i++){
                         //Variables for readability
@@ -49,24 +50,25 @@ const ChartComponent = (props) => {
                         } else if(open === close) {
                             //Even Symbol
                             console.log ("same");
-                            ctx.strokeStlye = "#000000";
+                            ctx.strokeStyle = "#000000";
                         } else {
                             console.log("error");
                         }
                         //Drawing of symbols
                         //Set to 16px per stock change gap, +1 due to index being 0
-                        ctx.moveTo(50 + (16 * (i + 1)), high + 50);
-                        ctx.lineTo(50 + (16 * (i + 1)), low + 50);
+                        //Y-axis is done by purely trial and error, I do not know how the formula works
+                        ctx.moveTo(50 + (16 * (i + 1)), (high * 800) - 110);
+                        ctx.lineTo(50 + (16 * (i + 1)), (low * 800) - 110);
                         ctx.stroke();
                     }
 
-                    //Testing of symbols (bullish)
+                    /*//Testing of symbols (bullish)
                     ctx.beginPath();
                     ctx.strokeStyle = "#58bf66";
                     ctx.lineWidth = 3;
                     //High-to-low
-                    ctx.moveTo(66, 100);
-                    ctx.lineTo(66, 140);
+                    ctx.moveTo(66, 50);
+                    ctx.lineTo(66, 90);
                     ctx.stroke();
                     //Open
                     ctx.moveTo(66, 130);
@@ -93,7 +95,7 @@ const ChartComponent = (props) => {
                     //Close
                     ctx.moveTo(82, 109);
                     ctx.lineTo(89, 109);
-                    ctx.stroke();
+                    ctx.stroke();*/
                 }
             )
     }
@@ -132,9 +134,9 @@ const ChartComponent = (props) => {
 
         //Y-axis price scale
         //Unable to figure out a way to dynamically enable the scale to extend based on the average high-low
-        for(let i=0; i<8; i++){
-            let priceScaleDistance = 50 + (57 * i);
-            let priceDifference = 6 - (0.5 * i);
+        for(let i=0; i<11; i++){
+            let priceScaleDistance = 50 + (40 * i);
+            let priceDifference = 7 - (0.5 * i);
             let yAxisPrice = "$" + (priceDifference / 10).toString();
             ctx.beginPath();
             ctx.lineWidth = 1;
