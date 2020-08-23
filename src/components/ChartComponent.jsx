@@ -25,6 +25,7 @@ const ChartComponent = (props) => {
                     //Initialize array to consist of 50 data by latest date sorted from earliest to latest
                     let stockChartArray = Object.values(data["Time Series (Daily)"]).slice(0, 50).reverse();
                     console.log(stockChartArray);
+                    
                     //Creation of symbols
                     for (let i=0; i<stockChartArray.length; i++){
                         //Variables for readability
@@ -46,6 +47,7 @@ const ChartComponent = (props) => {
                             console.log("bye");
                             ctx.strokeStyle = "#58bf66";
                         }
+                        //Drawing of symbols
                         //Set to 16px per stock change gap, +1 due to index being 0
                         ctx.moveTo(50 + (16 * (i + 1)), high + 50);
                         ctx.lineTo(50 + (16 * (i + 1)), low + 50);
@@ -126,8 +128,8 @@ const ChartComponent = (props) => {
         //Unable to figure out a way to dynamically enable the scale to extend based on the average high-low
         for(let i=0; i<11; i++){
             let priceScaleDistance = 50 + (40 * i);
-            let priceDifference = 100 - (10 * i);
-            let yAxisPrice = "$" + priceDifference.toString();
+            let priceDifference = 20 - (2 * i);
+            let yAxisPrice = "$" + (priceDifference / 10).toString();
             ctx.beginPath();
             ctx.lineWidth = 1;
             ctx.moveTo(50, priceScaleDistance);
