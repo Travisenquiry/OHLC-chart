@@ -29,10 +29,10 @@ const ChartComponent = (props) => {
                     //Creation of symbols
                     for (let i=0; i<stockChartArray.length; i++){
                         //Variables for readability
-                        let open = parseInt(stockChartArray[i]["1. open"]);
-                        let close = parseInt(stockChartArray[i]["4. close"]);
-                        let high = parseInt(stockChartArray[i]["2. high"]);
-                        let low = parseInt(stockChartArray[i]["3. low"]);
+                        let open = parseFloat(stockChartArray[i]["1. open"]);
+                        let close = parseFloat(stockChartArray[i]["4. close"]);
+                        let high = parseFloat(stockChartArray[i]["2. high"]);
+                        let low = parseFloat(stockChartArray[i]["3. low"]);
 
                         //Setup of symbols
                         ctx.beginPath();
@@ -42,10 +42,16 @@ const ChartComponent = (props) => {
                             //Bearish Symbol
                             console.log("hello");
                             ctx.strokeStyle = "#ee6f72";
-                        } else {
+                        } else if(open < close) {
                             //Bullish Symbol
                             console.log("bye");
                             ctx.strokeStyle = "#58bf66";
+                        } else if(open === close) {
+                            //Even Symbol
+                            console.log ("same");
+                            ctx.strokeStlye = "#000000";
+                        } else {
+                            console.log("error");
                         }
                         //Drawing of symbols
                         //Set to 16px per stock change gap, +1 due to index being 0
@@ -126,9 +132,9 @@ const ChartComponent = (props) => {
 
         //Y-axis price scale
         //Unable to figure out a way to dynamically enable the scale to extend based on the average high-low
-        for(let i=0; i<11; i++){
-            let priceScaleDistance = 50 + (40 * i);
-            let priceDifference = 20 - (2 * i);
+        for(let i=0; i<8; i++){
+            let priceScaleDistance = 50 + (57 * i);
+            let priceDifference = 6 - (0.5 * i);
             let yAxisPrice = "$" + (priceDifference / 10).toString();
             ctx.beginPath();
             ctx.lineWidth = 1;
