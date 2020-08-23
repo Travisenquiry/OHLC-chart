@@ -40,15 +40,12 @@ const ChartComponent = (props) => {
                         //Check for bearish or bullish
                         if(open > close){
                             //Bearish Symbol
-                            console.log("hello");
                             ctx.strokeStyle = "#ee6f72";
                         } else if(open < close) {
                             //Bullish Symbol
-                            console.log("bye");
                             ctx.strokeStyle = "#58bf66";
                         } else if(open === close) {
                             //Even Symbol
-                            console.log ("same");
                             ctx.strokeStyle = "#000000";
                         } else {
                             console.log("error");
@@ -73,41 +70,6 @@ const ChartComponent = (props) => {
                         ctx.lineTo((50 + (16 * (i + 1)) + 7), (close * 800) - 110);
                         ctx.stroke();
                     }
-
-                    /*//Testing of symbols (bullish)
-                    ctx.beginPath();
-                    ctx.strokeStyle = "#58bf66";
-                    ctx.lineWidth = 3;
-                    //High-to-low
-                    ctx.moveTo(66, 50);
-                    ctx.lineTo(66, 90);
-                    ctx.stroke();
-                    //Open
-                    ctx.moveTo(66, 130);
-                    ctx.lineTo(59, 130);
-                    ctx.stroke();
-                    //Close
-                    ctx.moveTo(66, 107);
-                    ctx.lineTo(73, 107);
-                    ctx.stroke();
-
-
-                    //Testing of symbols (bearish)
-                    ctx.beginPath();
-                    ctx.strokeStyle = "#ee6f72";
-                    ctx.lineWidth = 3;
-                    //High-to-low
-                    ctx.moveTo(82, 100);
-                    ctx.lineTo(82, 130);
-                    ctx.stroke();
-                    //Open
-                    ctx.moveTo(82, 106);
-                    ctx.lineTo(75, 106);
-                    ctx.stroke();
-                    //Close
-                    ctx.moveTo(82, 109);
-                    ctx.lineTo(89, 109);
-                    ctx.stroke();*/
                 }
             )
     }
@@ -159,8 +121,7 @@ const ChartComponent = (props) => {
             ctx.textAlign = "right";
             ctx.fillText(yAxisPrice, 40, priceScaleDistance+4);      
         }
-
-    });
+    }, []);
 
     return (
         <div id="chart-div">
