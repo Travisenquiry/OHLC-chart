@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import ChartComponent from './components/Stock/Ticker/Chart/ChartComponent.jsx';
 import ButtonComponent from './components/Stock/Ticker/Button/ButtonComponent.jsx';
 import './Main.css';
