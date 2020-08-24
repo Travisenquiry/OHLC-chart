@@ -42,9 +42,9 @@ const Main = () => {
             <div className="tickers-container">
                 <ButtonComponent symbol="AVHOQ"/>
                 <ButtonComponent symbol="CNTTQ"/>
-                <ButtonComponent />
-                <ButtonComponent />
-                <ButtonComponent />
+                <ButtonComponent symbol="CPIVF"/>
+                <ButtonComponent symbol="EVLLF"/>
+                <ButtonComponent symbol="BIOL"/>
             </div>
             <div className="chart-container">
                 <ChartComponent symbol={storedStockSymbol}/>
