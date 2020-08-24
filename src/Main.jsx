@@ -10,8 +10,7 @@ const Main = () => {
     //Button onclick function to be passed to button component to set state
     const buttonMouseClickFunction = (e) => {
         window.localStorage.setItem("symbol", e.target.name);
-        setStockSymbol(window.localStorage.getItem("symbol"));
-        console.log(stockSymbol);
+        setStockSymbol(e.target.name);
     };
 
     return (
