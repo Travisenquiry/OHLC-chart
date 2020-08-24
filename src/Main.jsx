@@ -1,5 +1,5 @@
 import React from 'react';
-import ChartComponent from './components/ChartComponent.jsx';
+import ChartComponent from './components/Stock/Chart/ChartComponent.jsx';
 
 const Main = () => {
     return (
