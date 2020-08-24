@@ -14,20 +14,25 @@ const Main = () => {
     };
 
     return (
+        
         <div className="container">
             <div className="header">
+                <h1 className="header-text">A HEADER</h1>
             </div>
-            <div className="tickers-container">
-                <ButtonComponent symbol="AVHOQ" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
-                <ButtonComponent symbol="CNTTQ" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
-                <ButtonComponent symbol="CPIVF" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
-                <ButtonComponent symbol="EVLLF" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
-                <ButtonComponent symbol="BIOL" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
-            </div>
-            <div className="chart-container">
-                <ChartComponent symbol={stockSymbol}/>
+            <div className="content-container">
+                <div className="tickers-container">
+                    <ButtonComponent symbol="AVHOQ" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
+                    <ButtonComponent symbol="CNTTQ" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
+                    <ButtonComponent symbol="CPIVF" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
+                    <ButtonComponent symbol="EVLLF" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
+                    <ButtonComponent symbol="BIOL" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
+                </div>
+                <div className="chart-container">
+                    <ChartComponent symbol={stockSymbol}/>
+                </div>
             </div>
             <div className="footer">
+                <p className="footer-text">a footer</p>
             </div>
         </div>
     );
