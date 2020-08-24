@@ -1,4 +1,4 @@
-.ticker {
+.unselected {
     color: #a5b6b2;
     background-color: #d1f1da;
     border: none;
@@ -12,7 +12,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.tickerSelected {
+.selected {
     color: #a5b6b2;
     background-color: #a9dfb6;
     border: none;
