@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 const ChartComponent = (props) => {
-
+    
     //Get stock list function
     const getStock = (props) => {
         //Variables
