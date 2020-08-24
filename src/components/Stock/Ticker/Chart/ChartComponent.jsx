@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 const ChartComponent = (props) => {
-    
+
     //Get stock list function
     const getStock = (props) => {
         //Variables
@@ -77,7 +77,10 @@ const ChartComponent = (props) => {
     //Lifecycle Method
     useEffect(() => {
         //Get Stock listing and push into states
-        getStock(props);
+        //Check if it is first time user, do not get grab ticker from API
+        if(window.localStorage.getItem("symbol") !== null) {
+            getStock(props);
+        }
 
         //Implemented chart canvas
         let chart = document.getElementById("chart");
@@ -121,7 +124,7 @@ const ChartComponent = (props) => {
             ctx.textAlign = "right";
             ctx.fillText(yAxisPrice, 40, priceScaleDistance+4);      
         }
-    }, []);
+    }, [props.symbol]);
 
     return (
         <div id="chart-div">

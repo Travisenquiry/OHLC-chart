@@ -1,10 +1,13 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import ChartComponent from './components/Stock/Ticker/Chart/ChartComponent.jsx';
 import ButtonComponent from './components/Stock/Ticker/Button/ButtonComponent.jsx';
 import './Main.css';
 
 const Main = () => {
-    //State used for symbol
+    //States
+    const [stockSymbol, setStockSymbol] = useState("");
+    //Get localStorage stock symbol
+    const storedStockSymbol = window.localStorage.getItem("symbol");
 
     useEffect(() => {
         //Add event listeners to all ticker button
@@ -24,11 +27,9 @@ const Main = () => {
 
             //Add onclick event to change ticker upon click
             tickerButtons[i].addEventListener("click", (() => {
-                //console.log(stockSymbol);
-                //setStockSymbol(tickerButtons[i].innerHTML);
-                window.localStorage.removeItem("symbol");
                 window.localStorage.setItem("symbol", tickerButtons[i].innerHTML);
-
+                setStockSymbol(window.localStorage.getItem("symbol"));
+                console.log(window.localStorage.getItem("symbol"));
             }));
         }
 
@@ -39,14 +40,14 @@ const Main = () => {
             <div className="header">
             </div>
             <div className="tickers-container">
-                <ButtonComponent />
-                <ButtonComponent />
+                <ButtonComponent symbol="AVHOQ"/>
+                <ButtonComponent symbol="CNTTQ"/>
                 <ButtonComponent />
                 <ButtonComponent />
                 <ButtonComponent />
             </div>
             <div className="chart-container">
-                <ChartComponent symbol="CNTTQ"/>
+                <ChartComponent symbol={storedStockSymbol}/>
             </div>
             <div className="footer">
             </div>

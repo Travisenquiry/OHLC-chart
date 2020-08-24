@@ -1,16 +1,11 @@
 import React, { useEffect } from 'react';
 import './ButtonComponent.css';
 
-const ButtonComponent = () => {
-
-    useEffect(() => {
-
-
-    }, []);
+const ButtonComponent = (props) => {
 
     return (
         <div className="button-div">
-            <button className="ticker unselected">MSFT</button>
+            <button className="ticker unselected">{props.symbol}</button>
         </div>
     )
 }
