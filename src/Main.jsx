@@ -8,13 +8,21 @@ const Main = () => {
     const [stockSymbol, setStockSymbol] = useState('');
 
     return (
-        <div className="Main">
-            <span className="tickers">
+        <div className="container">
+            <div className="header">
+            </div>
+            <div className="tickers-container">
                 <ButtonComponent />
-            </span>
-            <span>
+                <ButtonComponent />
+                <ButtonComponent />
+                <ButtonComponent />
+                <ButtonComponent />
+            </div>
+            <div className="chart-container">
                 <ChartComponent symbol="CNTTQ"/>
-            </span>
+            </div>
+            <div className="footer">
+            </div>
         </div>
     );
 };

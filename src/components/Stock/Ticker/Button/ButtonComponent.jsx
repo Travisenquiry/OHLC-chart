@@ -5,7 +5,7 @@ const ButtonComponent = () => {
 
     return (
         <div className="button-div">
-            <button className="ticker">hello</button>
+            <button className="ticker">MSFT</button>
         </div>
     )
 }
