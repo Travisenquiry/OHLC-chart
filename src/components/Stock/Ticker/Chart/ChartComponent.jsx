@@ -6,6 +6,7 @@ const ChartComponent = (props) => {
     const getStock = (props) => {
         //Variables
         let stockSymbol = props.symbol;
+        console.log(stockSymbol);
         const apiLink = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockSymbol}&apikey=GRWNDOCNLWTTES40`;
         
         //Reinitialized for bearish and bullish symbols
@@ -24,7 +25,6 @@ const ChartComponent = (props) => {
                 function(data){
                     //Initialize array to consist of 50 data by latest date sorted from earliest to latest
                     let stockChartArray = Object.values(data["Time Series (Daily)"]).slice(0, 50).reverse();
-                    console.log(stockChartArray);
                     //Flips the canvas on the Y axis for easier symbols stroke
                     ctx.transform(1, 0, 0, -1, 0, chart.height);
                     //Creation of symbols

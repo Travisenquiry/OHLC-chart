@@ -4,10 +4,8 @@ import ButtonComponent from './components/Stock/Ticker/Button/ButtonComponent.js
 import './Main.css';
 
 const Main = () => {
-    //States
+    //States (Used for re-rendering of chart)
     const [stockSymbol, setStockSymbol] = useState("");
-    //Get localStorage stock symbol
-    const storedStockSymbol = window.localStorage.getItem("symbol");
 
     useEffect(() => {
         //Add event listeners to all ticker button
@@ -29,7 +27,6 @@ const Main = () => {
             tickerButtons[i].addEventListener("click", (() => {
                 window.localStorage.setItem("symbol", tickerButtons[i].innerHTML);
                 setStockSymbol(window.localStorage.getItem("symbol"));
-                console.log(window.localStorage.getItem("symbol"));
             }));
         }
 
@@ -47,7 +44,7 @@ const Main = () => {
                 <ButtonComponent symbol="BIOL"/>
             </div>
             <div className="chart-container">
-                <ChartComponent symbol={storedStockSymbol}/>
+                <ChartComponent symbol={window.localStorage.getItem("symbol")}/>
             </div>
             <div className="footer">
             </div>
