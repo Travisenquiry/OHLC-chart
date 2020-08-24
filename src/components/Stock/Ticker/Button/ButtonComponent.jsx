@@ -3,7 +3,7 @@ import './ButtonComponent.css';
 
 const ButtonComponent = (props) => {
     //States for selected symbol for re-rendering
-    const [selectedSymbol, setSelectedSymbol] = useState(window.localStorage.getItem("symbol"));
+    const [selectedSymbol, setSelectedSymbol] = useState(props.selected);
     //Variable for selected/unselected
     let selection;
 
@@ -11,8 +11,13 @@ const ButtonComponent = (props) => {
     if(props.symbol === selectedSymbol){
         selection = "ticker selected";
     } else {
-        selection = "ticker unselected";
+        selection = "ticker";
     }
+
+    //Re-renders the button if another symbol has been selected
+    useEffect(() => {
+        setSelectedSymbol(props.selected);
+    }, [props.selected]);
 
     return (
         <div className="button-div">
