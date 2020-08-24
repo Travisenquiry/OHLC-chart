@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ChartComponent from './components/Stock/Ticker/Chart/ChartComponent.jsx';
 import ButtonComponent from './components/Stock/Ticker/Button/ButtonComponent.jsx';
+import './Main.css';
 
 const Main = () => {
     //State used for symbol
