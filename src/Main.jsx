@@ -1,11 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import ChartComponent from './components/Stock/Ticker/Chart/ChartComponent.jsx';
 import ButtonComponent from './components/Stock/Ticker/Button/ButtonComponent.jsx';
 import './Main.css';
 
 const Main = () => {
     //State used for symbol
-    const [stockSymbol, setStockSymbol] = useState('');
 
     useEffect(() => {
         //Add event listeners to all ticker button
@@ -22,8 +21,16 @@ const Main = () => {
                 tickerButtons[i].classList.add("unselected");
                 tickerButtons[i].classList.remove("selected");
             }));
-        }
 
+            //Add onclick event to change ticker upon click
+            tickerButtons[i].addEventListener("click", (() => {
+                //console.log(stockSymbol);
+                //setStockSymbol(tickerButtons[i].innerHTML);
+                window.localStorage.removeItem("symbol");
+                window.localStorage.setItem("symbol", tickerButtons[i].innerHTML);
+
+            }));
+        }
 
     }, []);
 
