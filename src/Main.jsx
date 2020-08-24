@@ -5,17 +5,20 @@ import './Main.css';
 
 const Main = () => {
     //States (Used for re-rendering of chart)
-    const [stockSymbol, setStockSymbol] = useState("");
+    const [stockSymbol, setStockSymbol] = useState(window.localStorage.getItem("symbol"));
 
     useEffect(() => {
         //Add event listeners to all ticker button
         let tickerButtons = document.getElementsByClassName("ticker");
         for (let i=0; i < tickerButtons.length; i++) {
             //Add mouseover event to change button color on hover
-            tickerButtons[i].addEventListener("mouseover", (() => {
-                tickerButtons[i].classList.add("selected");
-                tickerButtons[i].classList.remove("unselected");
-            }));
+            //Check if ticker is currently selected
+            if(window.localStorage.getItem("symbol") !== tickerButtons[i].innerHTML) {
+                tickerButtons[i].addEventListener("mouseover", (() => {
+                    tickerButtons[i].classList.add("selected");
+                    tickerButtons[i].classList.remove("unselected");
+                }));
+            }
 
             //Add mouseout event to change button color on leaving
             tickerButtons[i].addEventListener("mouseout", (() => {
