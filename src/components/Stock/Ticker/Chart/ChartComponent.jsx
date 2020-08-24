@@ -6,7 +6,6 @@ const ChartComponent = (props) => {
     const getStock = (props) => {
         //Variables
         let stockSymbol = props.symbol;
-        console.log(stockSymbol);
         const apiLink = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockSymbol}&apikey=GRWNDOCNLWTTES40`;
         
         //Reinitialized for bearish and bullish symbols
