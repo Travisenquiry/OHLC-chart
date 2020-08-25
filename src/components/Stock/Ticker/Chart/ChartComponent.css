@@ -1,3 +1,6 @@
+/* ------- Chart -------- */
+
+/* --- Enables canvas to resize based on browser/div size --- */
 #chart {
     width: 100%;
     height: 100%;

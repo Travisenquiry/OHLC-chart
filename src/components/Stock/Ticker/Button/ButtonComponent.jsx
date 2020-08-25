@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './ButtonComponent.css';
 
 const ButtonComponent = (props) => {
-    //States for selected symbol for re-rendering
+    //State for selected symbol passed by Main as prop for re-rendering purpose and class name conditional comparison
     const [selectedSymbol, setSelectedSymbol] = useState(props.selected);
     
     //Re-renders the button if another symbol has been selected
@@ -10,7 +10,6 @@ const ButtonComponent = (props) => {
         setSelectedSymbol(props.selected);
     }, [props.selected]);
 
-    
     return (
         <div className="button-div">
             <button 

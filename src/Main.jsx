@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
+import './Main.css';
 import ChartComponent from './components/Stock/Ticker/Chart/ChartComponent.jsx';
 import ButtonComponent from './components/Stock/Ticker/Button/ButtonComponent.jsx';
-import './Main.css';
 
 const Main = () => {
-    //States (Used for re-rendering of chart)
+    //State for selected symbol, default state set as local storage for user's choice of stock to not be lost upon page refresh
     const [stockSymbol, setStockSymbol] = useState(window.localStorage.getItem("symbol"));
 
-    //Button onclick function to be passed to button component to set state
+    //Button onclick function to be passed to button component to set parent state for selected symbol
     const buttonMouseClickFunction = (e) => {
         window.localStorage.setItem("symbol", e.target.name);
         setStockSymbol(e.target.name);
     };
 
     return (
-        
         <div className="container">
             <div className="header">
                 <h1 className="header-text">A HEADER</h1>
@@ -32,10 +31,9 @@ const Main = () => {
                     <ButtonComponent symbol="SDRLF" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
                     <ButtonComponent symbol="TNYBF" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
                     <ButtonComponent symbol="BLOZF" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
-                    
                 </div>
                 <div className="chart-container">
-                    <ChartComponent symbol={stockSymbol}/>
+                    <ChartComponent selected={stockSymbol}/>
                 </div>
             </div>
             <div className="footer">

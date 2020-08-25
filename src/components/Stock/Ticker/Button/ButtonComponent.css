@@ -1,3 +1,4 @@
+/* ----- Ticker Buttons ----- */
 .ticker-btn {
     color: #a5b6b2;
     background-color: #d1f1da;
@@ -26,6 +27,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* ----- Current selected ticker ------ */
 .selected {
     color: #a5b6b2;
     background-color: #a9dfb6;
