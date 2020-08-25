@@ -1,4 +1,4 @@
-**Bambu Frontend Engineer Test**
+# **Bambu Frontend Engineer Test**
 
 Installation Instructions
 -----------------------
