@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --port 3000",
     "build": "webpack -p --progress --config=webpack.config.js --mode none"
   },
   "repository": "git+https://github.com/Travisenquiry/bambu-fe-test.git",

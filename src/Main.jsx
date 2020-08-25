@@ -27,7 +27,11 @@ const Main = () => {
                     <ButtonComponent symbol="EVLLF" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
                     <ButtonComponent symbol="BIOL" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
                     <ButtonComponent symbol="TRCH" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
-                    <ButtonComponent symbol="" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
+                    <ButtonComponent symbol="FGPR" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
+                    <ButtonComponent symbol="BUKS" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
+                    <ButtonComponent symbol="SDRLF" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
+                    <ButtonComponent symbol="TNYBF" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
+                    <ButtonComponent symbol="BLOZF" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
                     
                 </div>
                 <div className="chart-container">
