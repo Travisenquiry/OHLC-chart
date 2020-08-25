@@ -1,7 +1,7 @@
 # **Bambu Frontend Engineer Test**
 
-Installation Instructions
------------------------
+**Installation Instructions**
+
 
 1. npm install
 
