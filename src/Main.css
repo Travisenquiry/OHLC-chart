@@ -7,6 +7,10 @@
     display: flex;
 }
 
+.chart-container{ 
+    width: 100%;
+}
+
 .header {
     width: 100%;
     background-color: #721c15;

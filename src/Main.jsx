@@ -28,6 +28,7 @@ const Main = () => {
                     <ButtonComponent symbol="BIOL" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
                     <ButtonComponent symbol="TRCH" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
                     <ButtonComponent symbol="" selected={stockSymbol} mouseClick={buttonMouseClickFunction}/>
+                    
                 </div>
                 <div className="chart-container">
                     <ChartComponent symbol={stockSymbol}/>
